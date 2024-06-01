@@ -1,0 +1,39 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>👨‍💻‍ Hello, I'm Thirking!</h1>
+			<p>
+				Welcome to my <a href="https://thirking.top/blog">Blog</a>. I will
+				publish some articles here to share some of my personal
+				thoughts.
+			</p>
+			<p>
+				My technology stack is mainly <code>C#</code>, <code>F#</code>, <code
+					>javascript</code
+				>. I devote part of my time to <code>WPF</code> development, and
+				recently I have been gradually turning to <code>Blazor</code>.
+			</p>
+			<p>Let's listen to some songs.</p>
+			<iframe
+				class="mx-auto my-4"
+				width="330"
+				height="86"
+				src="//music.163.com/outchain/player?type=2&id=569213220&auto=1&height=66"
+			></iframe>
+			<p class="font-bol text-blue-200">El Psy Congroo!</p>
+		</main>
+		<Footer />
+	</body>
+</html>

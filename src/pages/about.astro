@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+---
+
+<Layout
+	title="About Me"
+	description="Lorem ipsum dolor sit amet"
+	pubDate={new Date("August 08 2021")}
+	heroImage="https://source.unsplash.com/960x400/?future,city"
+>
+	<h3>👨‍💻‍ Hello, I'm Thirking!</h3>
+	<p>
+		Welcome to my <a href="https://thirking.top/blog">Blog</a>. I'm a progammer, I will
+		publish some articles here to share some of my personal thoughts.
+	</p>
+	<p>
+		My technology stack is mainly <code>C#</code>, <code>F#</code>, <code
+			>javascript</code
+		>. I devote part of my time to <code>WPF</code> development, and recently
+		I have been gradually turning to <code>Blazor</code>.
+	</p>
+	<p>Let's listen to some songs.</p>
+	<iframe
+		class="mx-auto my-4"
+		width="330"
+		height="86"
+		src="//music.163.com/outchain/player?type=2&id=569213220&auto=1&height=66"
+	></iframe>
+	<p class="p-8 text-3xl font-bol text-blue-200 text-center">El Psy Congroo!</p>
+</Layout>
