@@ -10,11 +10,12 @@
     "astro": "astro",
     "docker-build": "docker build -t thirking-blog .",
     "docker-run": "docker run -p 80:8080 --name thirking-blog -d thirking-blog",
-    "copy": "docker exec thirking-blog rm -rf /usr/share/nginx/html/* && docker cp ./dist/. thirking-blog:/usr/share/nginx/html/"
+    "copy": "docker exec thirking-blog rm -rf /app/dist/* && docker cp ./dist/. thirking-blog:/app/dist/"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/mdx": "^3.1.0",
+    "@astrojs/node": "^8.3.1",
     "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.5",
     "@astrojs/svelte": "^5.5.0",
