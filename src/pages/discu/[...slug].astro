@@ -1,0 +1,36 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+
+import { Client } from '@discublog/api/client'
+
+const client = new Client({
+    token: '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',
+    owner: 'thirking',
+    name: 'thirking-blog',
+  })
+
+let params = { name: "Announcements", bodyHTML: true };
+const posts = (
+	await client.queryByCategoryName(params)
+)!.repository!.discussions.nodes.map((n) => {
+	return {
+		slug: n.number.toString(),
+		data: {
+			title: n.title,
+			pubDate: new Date(n.createdAt),
+			updatedDate: new Date(n.updatedAt),
+			heroImage: "https://picsum.photos/720/300?random=" + n.number,
+			content: n.bodyHTML
+		}
+	};
+});
+
+const { slug } = Astro.params;
+const post = posts.find((page) => page.slug === slug);
+if (!post) return Astro.redirect("/404");
+
+---
+
+<BlogPost {...post.data}>
+	<Fragment set:html={post.data.content}>
+</BlogPost>

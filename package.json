@@ -20,6 +20,7 @@
     "@astrojs/sitemap": "^3.1.5",
     "@astrojs/svelte": "^5.5.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@discublog/api": "^1.0.0",
     "astro": "^4.10.2",
     "svelte": "^4.2.17",
     "tailwindcss": "^3.4.3",

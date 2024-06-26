@@ -1,14 +1,36 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+import { Client } from '@discublog/api/client'
+
+const client = new Client({
+    token: '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',
+    owner: 'thirking',
+    name: 'thirking-blog',
+  })
+
+// const posts = (await getCollection('blog')).sort(
+// 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+// );
+let params = { name: "Announcements" };
+const posts = (
+	await client.queryByCategoryName(params)
+)!.repository!.discussions.nodes.map((n) => {
+	return {
+		slug: n.number.toString(),
+		data: {
+			title: n.title,
+			pubDate: new Date(n.createdAt),
+			updatedDate: new Date(n.updatedAt),
+			heroImage: "https://picsum.photos/720/300?random=" + n.number
+		}
+	};
+});
 ---
 
 <!doctype html>
@@ -93,11 +115,18 @@ const posts = (await getCollection('blog')).sort(
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
+								<a href={`/discu/${post.slug}/`}>
+									<img
+										width={720}
+										height={300}
+										src={post.data.heroImage}
+										alt=""
+									/>
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
+										<FormattedDate
+											date={post.data.pubDate}
+										/>
 									</p>
 								</a>
 							</li>

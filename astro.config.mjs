@@ -8,7 +8,7 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://wwww.thirking.top',
   integrations: [mdx(), sitemap(), svelte(), tailwind()],
   output: "server",
   adapter: node({
